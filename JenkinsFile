@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage ('Teste deploy') {
+        stage ('Build') {
             steps {
-                sh 'echo tudo beleza'
+                sh 'mvn clean package -DskipTests=true'
             }
         }
     }
