@@ -22,9 +22,8 @@ pipeline {
             }
         }
         stage ('Slack') {            
-            steps {
-                slackSend message: 'Build buildado, deploy deploiado mil grau no bagulho'
-                slackSend channel: '#ab-vivex', message: 'Deploy de vivex-api executado com sucesso'
+            steps {                
+                slackSend message: 'Deploy de vivex-api executado com sucesso'
             }            
         }
     }
