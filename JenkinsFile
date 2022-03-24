@@ -22,8 +22,8 @@ pipeline {
             }
         }
         stage ('Slack') {            
-            steps {                
-                slackSend message: 'Deploy de vivex-api executado com sucesso'
+            steps {
+                slackSend message: 'Build e deploy de vivex-api executados com sucesso'
             }            
         }
     }
