@@ -11,7 +11,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
-         stage ('Analise do Sonar') {
+        stage ('Analise do Sonar') {
             environment {
                 scannerHome = tool 'SONAR_SCANNER'
             }
@@ -20,6 +20,11 @@ pipeline {
                     sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.host.url=http://localhost:9001 -Dsonar.login=f88f779ffa11a18a859bc1532d41d1933276b29f -Dsonar.java.binaries=target"
                 }
             }
+        }
+        stage ('Slack') {            
+            steps {
+                slackSend message: 'Build buildado, deploy deploiado mil grau no bagulho'
+            }            
         }
     }
 }
