@@ -6,10 +6,20 @@ pipeline {
                 sh 'mvn clean package -DskipTests=true'
             }
         }
+        stage ('Slack') {            
+            steps {
+                slackSend message: 'Build de projeto-teste executado com sucesso'                
+            }            
+        }
         stage ('Testes Unitarios') {
             steps {
                 sh 'mvn test'
             }
+        }
+        stage ('Slack') {            
+            steps {
+                slackSend message: 'Testes unitários de projeto-teste executados com sucesso'                
+            }            
         }
         stage ('Analise do Sonar') {
             environment {
@@ -23,8 +33,7 @@ pipeline {
         }
         stage ('Slack') {            
             steps {
-                slackSend message: 'Build e deploy de vivex-api executados com sucesso'
-                slackSend channel: '#outros-assuntos', message: 'Teste para multiplos canais'
+                slackSend message: 'Analise estática de código de projeto-teste feita com sucesso'                
             }            
         }
     }
