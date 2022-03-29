@@ -6,7 +6,7 @@ pipeline {
                 sh 'mvn clean package -DskipTests=true'
             }
         }
-        stage ('Slack') {            
+        stage ('Slack Build') {            
             steps {
                 slackSend message: 'Build de projeto-teste executado com sucesso'                
             }            
@@ -16,7 +16,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage ('Slack') {            
+        stage ('Slack Testes Unitarios') {            
             steps {
                 slackSend message: 'Testes unitários de projeto-teste executados com sucesso'                
             }            
@@ -31,7 +31,7 @@ pipeline {
                 }
             }
         }
-        stage ('Slack') {            
+        stage ('Slack Analise de código') {            
             steps {
                 slackSend message: 'Analise estática de código de projeto-teste feita com sucesso'                
             }            
