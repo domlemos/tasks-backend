@@ -6,21 +6,21 @@ pipeline {
                 sh 'mvn clean package -DskipTests=true'
             }
         }
-        stage ('Slack Build') {            
+        /* stage ('Slack Build') {            
             steps {
                 slackSend message: 'Build de projeto-teste executado com sucesso'                
             }            
-        }
+        } */
         stage ('Testes Unitarios') {
             steps {
                 sh 'mvn test'
             }
         }
-        stage ('Slack Testes Unitarios') {            
+        /* stage ('Slack Testes Unitarios') {            
             steps {
                 slackSend message: 'Testes unitários de projeto-teste executados com sucesso'                
             }            
-        }
+        } */
         stage ('Analise do Sonar') {
             environment {
                 scannerHome = tool 'SONAR_SCANNER'
@@ -31,15 +31,15 @@ pipeline {
                 }
             }
         }
-        stage ('Slack Analise de código') {            
+        /* stage ('Slack Analise de código') {            
             steps {
                 slackSend message: 'Analise estática de código de projeto-teste feita com sucesso'                
             }            
-        }       
+        }  */      
         stage ('Testes Funcionais') {
             steps {
                 dir('functional-test')
-                git credentialsId: 'github_login', url: 'https://github.com/domlemos/functional-task'
+                git url: 'https://github.com/domlemos/functional-task'
                 sh 'mvn test'
             }
         }
