@@ -36,6 +36,18 @@ pipeline {
                 slackSend message: 'Analise estática de código de projeto-teste feita com sucesso'                
             }            
         }
+        stage ('Testes Funcionais') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage ('Testes Funcionais') {
+            steps {
+                dir('functional-test')
+                git credentialsId: 'github_login', url: 'https://github.com/domlemos/functional-task.git'
+                sh 'mvn test'
+            }
+        }
     }
 }
 
