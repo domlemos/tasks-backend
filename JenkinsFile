@@ -21,7 +21,7 @@ pipeline {
                 slackSend message: 'Testes unitários de projeto-teste executados com sucesso'                
             }            
         } */
-        stage ('Analise do Sonar') {
+        /* stage ('Analise do Sonar') {
             environment {
                 scannerHome = tool 'SONAR_SCANNER'
             }
@@ -30,7 +30,7 @@ pipeline {
                     sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.host.url=http://localhost:9001 -Dsonar.login=f88f779ffa11a18a859bc1532d41d1933276b29f -Dsonar.java.binaries=target"
                 }
             }
-        }
+        } */
         /* stage ('Slack Analise de código') {            
             steps {
                 slackSend message: 'Analise estática de código de projeto-teste feita com sucesso'                
