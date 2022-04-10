@@ -36,13 +36,13 @@ pipeline {
                 slackSend message: 'Analise estática de código de projeto-teste feita com sucesso'                
             }            
         }  */      
-        stage ('Testes Funcionais') {
+        /* stage ('Testes Funcionais') {
             steps {
                 dir('functional-test')
                 git url: 'https://github.com/domlemos/functional-task'
                 sh 'mvn test'
             }
-        }
+        } */
         stage ('Deploy prod') {
             steps {
                 sh 'docker-compose build'
