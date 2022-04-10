@@ -40,7 +40,7 @@ services:
     build:
         context: .
         args:
-          - WAR_FILE=../DeployFront/target/tasks.war
+          - WAR_FILE=/home/daniel/.jenkins/workspace/DeployFront/target/tasks.war
           - CONTEXT=tasks
     networks:
       - prod_net_front
