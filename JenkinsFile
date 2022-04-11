@@ -45,6 +45,7 @@ pipeline {
         } */
         stage ('Deploy prod') {
             steps {
+                sh 'cp /home/daniel/.jenkins/workspace/DeployFront/target/tasks.war /home/daniel/.jenkins/workspace/DeployBack/target/tasks-frontend.war'
                 sh 'docker-compose build'
                 sh 'docker-compose up -d'
             }
